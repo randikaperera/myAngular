@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="styles.css">
+<h1>BUNGALOW BOOKING SERVICE - {{name}}</h1>
+<hr/>
+<button (click)="toggleBungalow()">{{showBungalows ? "Hide bungalows":"Show bungalows"}}</button>
+<div *ngIf=showBungalows>
+  <h1>Bungalows List</h1>
+  <table style="width:20%">
+    <tr>
+      <th>Bungalow ID</th>
+      <th>Bungalow Name</th>
+    </tr>
+    <tr *ngFor="let bungalow of bungalows">
+      <td>{{bungalow.id}}</td>
+      <td>{{bungalow.name}}</td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<button (click)="toggleRegion()">{{showRegions ? "Hide regions":"Show regions"}}</button>
+<div *ngIf=showRegions>
+  <h1>Regions List</h1>
+  <table style="width:20%">
+    <tr>
+      <th>Region ID</th>
+      <th>Region Name</th>
+    </tr>
+    <tr *ngFor="let region of regions">
+      <td>{{region.id}}</td>
+      <td>{{region.name}}</td>
+    </tr>
+  </table>
+</div>
+<hr/>
+<br/> <h5>Select Bunglow ID to get the bungalow Information....</h5>
+<div>
+  Bungalow ID :  <select [(ngModel)]="bungalowSelect" (ngModelChange)="onChange($event)">
+          <option *ngFor="let bungalow of bungalows" [ngValue]="bungalow">{{bungalow.id}}</option>
+          
+        </select>
+ 
+  <br/>
+  <br/>
+  <hr/>
+  <h2>Bungalow Information of : {{bungalowSelect.name}}</h2>
+  <table>
+    <tr>
+      <th>Bungalow ID</th>
+      <th>Bungalow Name</th>
+      <th>Region ID</th>
+      <th>Bungalow Code</th>
+      <th>Bungalow Rate</th>
+      <th>Bungalow Address</th>
+      <th>Bungalow Contact Number</th>
+      <th>Bungalow ImageURL</th>
+      <th>Maximum Occupancy</th>
+
+    </tr>
+    <tr>
+      <td>{{bungalow.id}}</td>
+      <td>{{bungalow.name}}</td>
+      <td>{{bungalow.regionId}}</td>
+      <td>{{bungalow.code}}</td>
+      <td>{{bungalow.rate}}</td>
+      <td>{{bungalow.address}}</td>
+      <td>{{bungalow.contactNumber}}</td>
+      <td>{{bungalow.bungalowImageURL}}</td>
+      <td>{{bungalow.maximumOccupancy}}</td>
+
+    </tr>
+  </table>
+</div>
